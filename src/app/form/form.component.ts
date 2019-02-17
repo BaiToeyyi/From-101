@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { User } from '../user';
 
 @Component({
   selector: 'app-form',
@@ -17,10 +18,15 @@ export class FormComponent implements OnInit {
   ngOnInit() {
     this.formGroup = this.formBulid.group({
       firstName: [''],
-      lastName: ['']
+      lastName: [''],
+      email: [''],
+      age: ['22']
     })
   }
   onSubmit(form: FormGroup){
-    console.log(form);
+    const {firstName, lastName, email,age} = form.value;
+    console.log(firstName, lastName, email, age);
+    const user = new User(firstName, lastName, email, age);
+    console.log(user);
   }
 }
