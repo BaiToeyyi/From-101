@@ -1,2 +1,6 @@
-<app-form></app-form>
-<app-detail></app-detail>
+<div>
+    <app-form (change)= "onChange($event)"></app-form>
+</div>
+<div>
+<app-detail [user] = "user"></app-detail>
+</div>

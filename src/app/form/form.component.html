@@ -1,15 +1,48 @@
 <form [formGroup] = "formGroup" (ngSubmit) = "onSubmit(formGroup)">
 <div>
   <input type="text" formControlName = "firstName" placeholder = "first name">
+  <label style ="color: tomato;" 
+  *ngIf = "formGroup.get('firstName').invalid && 
+  formGroup.get('firstName').touched &&
+  formGroup.get('firstName').errors['required']">Required.</label>
+  <label style ="color: tomato;" 
+  *ngIf = "formGroup.get('firstName').invalid && 
+  formGroup.get('firstName').touched &&
+  formGroup.get('firstName').errors['minlength']">min is 3</label>
 </div><br>
 <div>
   <input type="text" formControlName = "lastName" placeholder = "last name">
+  <label style ="color: tomato;" 
+  *ngIf = "formGroup.get('lastName').invalid && 
+  formGroup.get('lastName').touched &&
+  formGroup.get('lastName').errors['required']">Required.</label>
+  <label style ="color: tomato;" 
+  *ngIf = "formGroup.get('lastName').invalid && 
+  formGroup.get('lastName').touched &&
+  formGroup.get('lastName').errors['minlength']">min is 3</label>
+  
 </div><br>
 <div>
-  <input type="text" formControlName = "email" placeholder = "email">
+  <input type="text" formControlName = "email" placeholder = "E-mail">
+  <label style ="color: tomato;" 
+  *ngIf = "formGroup.get('email').invalid && 
+  formGroup.get('email').touched &&
+  formGroup.get('email').errors['required']">Required.</label>
+  <label style ="color: tomato;" 
+  *ngIf = "formGroup.get('email').invalid && 
+  formGroup.get('email').touched &&
+  formGroup.get('email').errors['email']">email is invalid</label>
 </div><br>
 <div>
-  <input type="number" formControlName = "age" placeholder = "age">
+  <input type="number" formControlName = "age" placeholder = "age" min="0" max="99">
+  <label style ="color: tomato;" 
+  *ngIf = "formGroup.get('age').invalid && 
+  formGroup.get('age').touched &&
+  formGroup.get('age').errors['min']">Between 0-99</label>
+  <label style ="color: tomato;" 
+  *ngIf = "formGroup.get('age').invalid && 
+  formGroup.get('age').touched &&
+  formGroup.get('age').errors['max']">Between 0-99</label>
 </div><br>
 <button>Submit</button>
 </form>
